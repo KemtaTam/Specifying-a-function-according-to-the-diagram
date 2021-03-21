@@ -4,6 +4,10 @@
 	background-color: #F1FAEEFF;
 }
 
+body{
+	min-width: 500px;
+}
+
 header{
 	font-size: 18px;
 	display: flex;
@@ -33,34 +37,49 @@ form{
 	font-size: 15px;
 }
 
-.next_sim{
-	display: flex;
-	justify-content: center;
-	margin-top: 30px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 12px;
-}
-.links{
-	margin-top: 5px;
-	display: flex;
-	justify-content: center;
-}
-.link{padding: 10px;}
-#l1{background-color: rgba(0, 128, 0, 0.616);}
-#l2{background-color: rgba(128, 119, 0, 0.616);}
-#l3{background-color: rgba(0, 128, 117, 0.616);}
-#l4{background-color: rgba(128, 0, 32, 0.616);}
-
 .symb{
 	margin-bottom: 10px;
 }
 
+.bodySymb{
+	display: flex;
+	justify-content: center;
+}
+.bSymb{
+	width: 30px;
+	height: auto;
+	font-size: 16px;
+	border-radius: 3px;
+}
+#bInv{background-color: rgba(51, 51, 51, 0.199);}
+#bKon{background-color: rgba(51, 51, 51, 0.199);}
+#bDiz{background-color: rgba(51, 51, 51, 0.199);}
+
+#bInv:hover{background-color: rgba(255, 255, 255, 0.719);}
+#bKon:hover{background-color: rgba(255, 255, 255, 0.719);}
+#bDiz:hover{background-color: rgba(255, 255, 255, 0.719);}
+
+#dnf{
+	display: flex;
+	justify-content: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 15px;
+}
+
+.test{
+	width: 320px;
+}
+.func{
+	display: flex;
+	justify-content: left;
+}
 .valueOfFunc{
 	width: 200px;
 	height: 20px;
 	text-align: center;
 	border: dashed 1px grey;
 	background-color: white;
+	margin-left: 5px;
 }
 
 span{font-size: 10px;}
@@ -82,3 +101,5 @@ span{font-size: 10px;}
 	transition: 0.2s;
 	font-size: 16.5px;
 }
+
+
