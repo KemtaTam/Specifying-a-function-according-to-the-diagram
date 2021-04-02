@@ -54,7 +54,7 @@ form{
 }
 .bSymb:hover{background-color: rgba(255, 255, 255, 0.719);}
 
-#dnf{
+#clar{
 	display: flex;
 	justify-content: center;
 	font-family: 'Roboto', sans-serif;
@@ -62,7 +62,7 @@ form{
 }
 
 .test{
-	width: 320px;
+	width: 240px;
 }
 .func{
 	display: flex;
