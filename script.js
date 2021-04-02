@@ -1,23 +1,40 @@
 const form = document.getElementById("form");
+let header = document.getElementsByTagName("header")[0];
+
+let num = getRandomIntInclusive(1, 2);
+
+let image = document.createElement("img");
+image.setAttribute("src", "images/" + num + "scheme.jpg");
+header.after(image);
+
+let clarification = document.createElement("span");
+clarification.setAttribute("id", "clar");
+if(num == 1){
+	clarification.textContent = "Запишите ответ в виде ДНФ (скобки не учитываются)";
+} else if(num == 2) {
+	clarification.textContent = "По возможности сократите ответ (скобки не учитываются)";
+}
+let symb = document.getElementsByClassName("symb")[0];
+symb.after(clarification);
 
 answer = {
 	1: ["¬x0∧x1∨¬x1∧x0", "¬x1∧x0∨¬x0∧x1",
 		"x1∧¬x0∨¬x1∧x0", "x0∧¬x1∨¬x0∧x1",
 		"¬x0∧x1∨x0∧¬x1", "¬x1∧x0∨x1∧¬x0",
 		"x1∧¬x0∨x0∧¬x1", "x0∧¬x1∨x1∧¬x0",
-
 		/*"(¬x0∧x1)∨(¬x1∧x0)", "(¬x1∧x0)∨(¬x0∧x1)",
 		"(x1∧¬x0)∨(¬x1∧x0)", "(x0∧¬x1)∨(¬x0∧x1)",
 		"(¬x0∧x1)∨(x0∧¬x1)", "(¬x1∧x0)∨(x1∧¬x0)",
 		"(x1∧¬x0)∨(x0∧¬x1)", "(x0∧¬x1)∨(x1∧¬x0)"*/
-	]
+	],
+	2: ["x0∧¬x1∧¬x2", "x0∧¬x2∧¬x1", 
+		"¬x1∧x0∧¬x2", "¬x1∧¬x2∧x0",
+		"¬x2∧x0∧¬x1", "¬x2∧¬x1∧x0"]
 };
 
 let bInv = document.getElementById("bInv");
 let bKon = document.getElementById("bKon");
 let bDiz = document.getElementById("bDiz");
-let bX0 = document.getElementById("bX0");
-let bX1 = document.getElementById("bX1");
 let valOfFunc = document.getElementsByClassName("valueOfFunc")[0];
 
 bInv.addEventListener("click", () => {
@@ -28,12 +45,6 @@ bKon.addEventListener("click", () => {
 })
 bDiz.addEventListener("click", () => {
 	insertSomething('∨', valOfFunc);
-})
-bX0.addEventListener("click", () => {
-	insertSomething('x0', valOfFunc);
-})
-bX1.addEventListener("click", () => {
-	insertSomething('x1', valOfFunc);
 })
 
 let popup1 = document.getElementsByClassName("pop-up1")[0];
@@ -66,12 +77,13 @@ bOk2.onclick = function () { popup2.style.display = "none"; }
 
 //проверяет возможные записи правильного ответа
 function checkAnswer(ans) {
-	for (var i = 0; i < answer[1].length; i++) {
-		if (answer[1][i] == delSpace(ans)) break;
+	for (var i = 0; i < answer[num].length; i++) {
+		if (answer[num][i] == delSpace(ans)) break;
 	}
-	return i != answer[1].length;
+	return i != answer[num].length;
 }
 //удаляет пробелы и скобки в ответе пользователя
+//где скобки будут нужны
 function delSpace(ans) {
 	let newAns = "";
 	for (let i = 0; i < ans.length; i++) {
@@ -114,3 +126,12 @@ function insertSomething(insert, textArea)
 
 	textArea.focus();
 }
+function getRandomIntInclusive(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
+  }
+
+
+
+
