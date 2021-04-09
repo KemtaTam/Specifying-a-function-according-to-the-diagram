@@ -1,18 +1,23 @@
 const form = document.getElementById("form");
 let header = document.getElementsByTagName("header")[0];
 
-let num = getRandomIntInclusive(1, 2);
+let num = getRandomIntInclusive(3, 3);
 
 let image = document.createElement("img");
 image.setAttribute("src", "images/" + num + "scheme.jpg");
 header.after(image);
 
-let clarification = document.createElement("span");
+let clarification = document.createElement("section");
+clarification.style.width = "380px";
+clarification.style.textAlign = "center";
+clarification.style.fontSize = "13px";
 clarification.setAttribute("id", "clar");
 if(num == 1){
 	clarification.textContent = "Запишите ответ в виде ДНФ (скобки не учитываются)";
-} else if(num == 2) {
+} else if(num == 2){
 	clarification.textContent = "По возможности сократите ответ (скобки не учитываются)";
+} else if(num == 3){
+	clarification.textContent = "Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются";
 }
 let symb = document.getElementsByClassName("symb")[0];
 symb.after(clarification);
@@ -29,7 +34,9 @@ answer = {
 	],
 	2: ["x0∧¬x1∧¬x2", "x0∧¬x2∧¬x1", 
 		"¬x1∧x0∧¬x2", "¬x1∧¬x2∧x0",
-		"¬x2∧x0∧¬x1", "¬x2∧¬x1∧x0"]
+		"¬x2∧x0∧¬x1", "¬x2∧¬x1∧x0"
+	],
+	3: ["x0∧x1∧¬x2∨x1∧x2", "x1∧x2∨x0∧x1∧¬x2"]
 };
 
 let bInv = document.getElementById("bInv");
