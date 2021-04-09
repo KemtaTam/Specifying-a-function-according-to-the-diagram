@@ -1,7 +1,7 @@
 const form = document.getElementById("form");
 let header = document.getElementsByTagName("header")[0];
 
-let num = getRandomIntInclusive(3, 3);
+let num = getRandomIntInclusive(1, 3);
 
 let image = document.createElement("img");
 image.setAttribute("src", "images/" + num + "scheme.jpg");
