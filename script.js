@@ -8,33 +8,45 @@ image.setAttribute("src", "images/" + num + "scheme.jpg");
 header.after(image);
 
 let clarification = document.createElement("section");
-clarification.style.width = "380px";
-clarification.style.textAlign = "center";
-clarification.style.fontSize = "13px";
 clarification.setAttribute("id", "clar");
-if(num == 1){
-	clarification.textContent = "Запишите ответ в виде ДНФ (скобки не учитываются)";
-} else if(num == 2){
-	clarification.textContent = "По возможности сократите ответ (скобки не учитываются)";
-} else if(num == 3){
-	clarification.textContent = "Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются";
+
+if (num == 1) {
+	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+} else if (num == 2) {
+	clarification.textContent = "По возможности сократите ответ.\n"
+	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+} else if (num == 3) {
+	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
 }
+
 let symb = document.getElementsByClassName("symb")[0];
 symb.after(clarification);
 
+if(num == 1){
+	let f = document.getElementById("f");
+	let bFunc = document.getElementsByClassName("body_func")[0];
+	f.textContent = "f(x0, x1) = ";
+	bFunc.style.width = "355px";
+}
+
 answer = {
-	1: ["¬x0∧x1∨¬x1∧x0", "¬x1∧x0∨¬x0∧x1",
+	1: [ 
+		"x0∧¬x1∨¬x0∧x1", "¬x0∧x1∨x0∧¬x1", 
+		/*"¬x0∧x1∨¬x1∧x0", "¬x1∧x0∨¬x0∧x1",
 		"x1∧¬x0∨¬x1∧x0", "x0∧¬x1∨¬x0∧x1",
 		"¬x0∧x1∨x0∧¬x1", "¬x1∧x0∨x1∧¬x0",
-		"x1∧¬x0∨x0∧¬x1", "x0∧¬x1∨x1∧¬x0",
+		"x1∧¬x0∨x0∧¬x1", "x0∧¬x1∨x1∧¬x0",*/
+
 		/*"(¬x0∧x1)∨(¬x1∧x0)", "(¬x1∧x0)∨(¬x0∧x1)",
 		"(x1∧¬x0)∨(¬x1∧x0)", "(x0∧¬x1)∨(¬x0∧x1)",
 		"(¬x0∧x1)∨(x0∧¬x1)", "(¬x1∧x0)∨(x1∧¬x0)",
 		"(x1∧¬x0)∨(x0∧¬x1)", "(x0∧¬x1)∨(x1∧¬x0)"*/
 	],
-	2: ["x0∧¬x1∧¬x2", "x0∧¬x2∧¬x1", 
-		"¬x1∧x0∧¬x2", "¬x1∧¬x2∧x0",
-		"¬x2∧x0∧¬x1", "¬x2∧¬x1∧x0"
+	2: ["x0∧¬x1∧¬x2", "x0∧¬x1∧¬x1∧¬x2",  
+		
 	],
 	3: ["x0∧x1∧¬x2∨x1∧x2", "x1∧x2∨x0∧x1∧¬x2"]
 };
@@ -138,7 +150,4 @@ function getRandomIntInclusive(min, max) {
 	max = Math.floor(max);
 	return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
   }
-
-
-
 
