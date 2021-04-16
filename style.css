@@ -55,18 +55,23 @@ form{
 .bSymb:hover{background-color: rgba(255, 255, 255, 0.719);}
 
 #clar{
-	display: flex;
+	/*display: flex;*/
 	justify-content: center;
 	font-family: 'Roboto', sans-serif;
-	font-size: 15px;
+	width: 380px;
+	text-align: center;
+	font-size: 13px;
+	white-space: pre-line;
+	
 }
 
-.test{
-	width: 240px;
+.body_func{
+	width: 400px;
 }
 .func{
 	display: flex;
 	justify-content: left;
+	padding-left: 10px;
 }
 .valueOfFunc{
 	width: 200px;
@@ -159,5 +164,6 @@ span{font-size: 10px;}
 	background-color: #8AB4F8;
 	font-weight: 550;
 }
+
 
 
