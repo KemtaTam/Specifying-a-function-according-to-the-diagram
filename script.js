@@ -4,7 +4,7 @@ let header = document.getElementsByTagName("header")[0];
 let num = getRandomIntInclusive(1, 3);
 
 let image = document.createElement("img");
-image.setAttribute("src", "images/" + num + "schema.jpg");
+image.setAttribute("src", "images/" + num + "schema.svg");
 header.after(image);
 
 let clarification = document.createElement("section");
