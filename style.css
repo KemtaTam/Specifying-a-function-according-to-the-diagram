@@ -5,7 +5,7 @@
 }
 
 body{
-	min-width: 500px;
+	min-width: 400px;
 }
 
 header{
@@ -21,6 +21,7 @@ img{
 	margin: 20px auto 0px auto;
 	width: 500px;
 	box-shadow: 2px 2px 10px rgb(43, 43, 43);
+	max-width: 99%;
 }
 
 form{
@@ -54,6 +55,7 @@ form{
 	background-color: #2b2c2b7e;
 	border: 1px solid black;
 	margin: 0px 0.5px;
+	cursor: pointer;
 }
 .bSymb:hover{background-color: rgba(255, 255, 255, 0.719);}
 
