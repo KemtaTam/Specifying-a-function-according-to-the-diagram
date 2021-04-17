@@ -4,7 +4,7 @@ let header = document.getElementsByTagName("header")[0];
 let num = getRandomIntInclusive(1, 3);
 
 let image = document.createElement("img");
-image.setAttribute("src", "images/" + num + "scheme.jpg");
+image.setAttribute("src", "images/" + num + "schema.jpg");
 header.after(image);
 
 let clarification = document.createElement("section");
@@ -12,14 +12,14 @@ clarification.setAttribute("id", "clar");
 
 if (num == 1) {
 	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
 } else if (num == 2) {
 	clarification.textContent = "По возможности сократите ответ.\n"
 	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
 } else if (num == 3) {
 	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
 }
 
 let symb = document.getElementsByClassName("symb")[0];
