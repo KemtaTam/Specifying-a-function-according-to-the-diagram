@@ -170,5 +170,16 @@ span{font-size: 10px;}
 	font-weight: 550;
 }
 
+#clar{
+	background-color: rgba(129, 129, 127, 0.562);
+	border-radius: 5px;
+	border: 1px solid black;
+}
+#imp{
+	background-color: rgba(95, 94, 85, 0);
+}
+.ps{
+	font-size: 11px;
+}
 
 
