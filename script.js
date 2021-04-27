@@ -11,19 +11,19 @@ let clarification = document.createElement("section");
 clarification.setAttribute("id", "clar");
 
 if (num == 1) {
-	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	clarification.insertAdjacentHTML('beforeend', `<b id="imp">Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию индексов в конъюнктах (x3∧x2∨x2∧x1 → x2∧x3∨x1∧x2) + запишите ответ БЕЗ скобок.' }`)
 } else if (num == 2) {
-	clarification.textContent = "По возможности сократите ответ.\n"
-	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	clarification.insertAdjacentHTML('beforeend', `<b id="imp">Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию индексов в конъюнктах (x3∧x2∨x2∧x1 → x2∧x3∨x1∧x2) + запишите ответ БЕЗ скобок.' }`)
 } else if (num == 3) {
-	clarification.insertAdjacentHTML('beforeend', `<b>Важно: </b> \
-	${ 'Запишите в ответе переменные по возрастанию индексов (x3∧x2∧x1 → x1∧x2∧x3), скобки не учитываются.' }`)
+	clarification.insertAdjacentHTML('beforeend', `<b id="imp">Важно: </b> \
+	${ 'Запишите в ответе переменные по возрастанию индексов в конъюнктах (x3∧x2∨x2∧x1 → x2∧x3∨x1∧x2) + запишите ответ БЕЗ скобок.' }`)
 }
 
 let symb = document.getElementsByClassName("symb")[0];
 symb.after(clarification);
+
 
 if(num == 1){
 	let f = document.getElementById("f");
