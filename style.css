@@ -63,11 +63,20 @@ form{
 	/*display: flex;*/
 	justify-content: center;
 	font-family: 'Roboto', sans-serif;
-	width: 380px;
+	width: 388px;
 	text-align: center;
 	font-size: 13px;
 	white-space: pre-line;
-	
+	background-color: rgba(129, 129, 127, 0.562);
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 2px 0px;
+}
+#imp{
+	background-color: rgba(95, 94, 85, 0);
+}
+.ps{
+	font-size: 11px;
 }
 
 .body_func{
@@ -170,16 +179,6 @@ span{font-size: 10px;}
 	font-weight: 550;
 }
 
-#clar{
-	background-color: rgba(129, 129, 127, 0.562);
-	border-radius: 5px;
-	border: 1px solid black;
-}
-#imp{
-	background-color: rgba(95, 94, 85, 0);
-}
-.ps{
-	font-size: 11px;
-}
+
 
 
