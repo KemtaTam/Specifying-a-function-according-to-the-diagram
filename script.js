@@ -1,11 +1,81 @@
 const form = document.getElementById("form");
 let header = document.getElementsByTagName("header")[0];
+let canvas = document.getElementsByTagName('canvas')[0];
+let ctx = canvas.getContext('2d');
 
 let num = getRandomIntInclusive(1, 3);
+canvas.style.backgroundImage = 'url(images/' + num + 'schema.svg)';
+if(num==3){
+	canvas.setAttribute('width', '590px');
+	canvas.setAttribute('height', '260px');
+}
 
-let image = document.createElement("img");
-image.setAttribute("src", "images/" + num + "schema.svg");
-header.after(image);
+let draw = document.getElementsByClassName('draw-img')[0];
+let clear = document.getElementsByClassName('clear-img')[0];
+let clearAll = document.getElementsByClassName('clearAll-btn')[0];
+//функция рисования
+function drawing(){
+	canvas.onmousedown = (event) => {
+		let x = event.offsetX;
+		let y = event.offsetY;
+
+		ctx.beginPath();
+		ctx.lineJoin = 'round';
+		ctx.lineCap = 'round';
+		ctx.moveTo (x,y);
+		ctx.lineTo (x,y);
+		ctx.lineWidth = '1';
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+
+		canvas.onmousemove = (event) => {
+			let x = event.offsetX;
+			let y = event.offsetY;
+			ctx.lineTo (x,y);
+			ctx.stroke();
+		}
+		canvas.onmouseup = () =>{
+			canvas.onmousemove = null;
+		}
+		canvas.onmouseout = function(){
+			canvas.onmousemove = null;
+		}
+	}
+}
+//функция стирания
+function clearing(){
+	canvas.onmousedown = (event) => {
+		let x = event.offsetX;
+		let y = event.offsetY;
+
+		ctx.beginPath();
+		ctx.clearRect(x-3,y-3,6,6)
+		ctx.stroke();
+
+		canvas.onmousemove = (event) => {
+			let x = event.offsetX;
+			let y = event.offsetY;
+			ctx.clearRect(x-3,y-3,6,6)
+		}
+		canvas.onmouseup = () =>{
+			canvas.onmousemove = null;
+		}
+		canvas.onmouseout = function(){
+			canvas.onmousemove = null;
+		}
+	}
+}
+draw.onclick = function(){
+	canvas.style.cursor = 'crosshair';
+	drawing();
+}
+clear.onclick = function(){
+	canvas.style.cursor = 'not-allowed';
+	clearing();
+}
+clearAll.onclick = function(){
+	ctx.clearRect(0,0, 1000,1000);
+}
 
 let clarification = document.createElement("section");
 clarification.setAttribute("id", "clar");
@@ -24,7 +94,6 @@ if (num == 1) {
 let symb = document.getElementsByClassName("symb")[0];
 symb.after(clarification);
 
-
 if(num == 1){
 	let f = document.getElementById("f");
 	let bFunc = document.getElementsByClassName("body_func")[0];
@@ -32,22 +101,9 @@ if(num == 1){
 	bFunc.style.width = "355px";
 }
 
-answer = {
-	1: [ 
-		"x0∧¬x1∨¬x0∧x1", "¬x0∧x1∨x0∧¬x1", 
-		/*"¬x0∧x1∨¬x1∧x0", "¬x1∧x0∨¬x0∧x1",
-		"x1∧¬x0∨¬x1∧x0", "x0∧¬x1∨¬x0∧x1",
-		"¬x0∧x1∨x0∧¬x1", "¬x1∧x0∨x1∧¬x0",
-		"x1∧¬x0∨x0∧¬x1", "x0∧¬x1∨x1∧¬x0",*/
-
-		/*"(¬x0∧x1)∨(¬x1∧x0)", "(¬x1∧x0)∨(¬x0∧x1)",
-		"(x1∧¬x0)∨(¬x1∧x0)", "(x0∧¬x1)∨(¬x0∧x1)",
-		"(¬x0∧x1)∨(x0∧¬x1)", "(¬x1∧x0)∨(x1∧¬x0)",
-		"(x1∧¬x0)∨(x0∧¬x1)", "(x0∧¬x1)∨(x1∧¬x0)"*/
-	],
-	2: ["x0∧¬x1∧¬x2", "x0∧¬x1∧¬x1∧¬x2",  
-		
-	],
+answer = { 
+	1: [ "x0∧¬x1∨¬x0∧x1", "¬x0∧x1∨x0∧¬x1",],
+	2: ["x0∧¬x1∧¬x2", "x0∧¬x1∧¬x1∧¬x2"],
 	3: ["x0∧x1∧¬x2∨x1∧x2", "x1∧x2∨x0∧x1∧¬x2"]
 };
 
@@ -77,11 +133,10 @@ function retrieveFormValue(event) {
 	event.preventDefault(); //отправлять на сервер не нужно
 	valOfFunc = form.querySelector('[name="func"]');
 
-	value = {
+/* 	value = {
 		func: valOfFunc.value,
 	};
-
-	console.log("v1", value);
+ */
 
 	if (checkAnswer(valOfFunc.value)) {
 		popup1.style.display = "block";
@@ -102,13 +157,11 @@ function checkAnswer(ans) {
 	return i != answer[num].length;
 }
 //удаляет пробелы и скобки в ответе пользователя
-//где скобки будут нужны
 function delSpace(ans) {
 	let newAns = "";
 	for (let i = 0; i < ans.length; i++) {
 		if (ans[i] != ' ' && ans[i] != '(' && ans[i] != ')') newAns += ans[i];
 	}
-	console.log(newAns);
 	return newAns;
 }
 //функция проверки формы на корректность 
@@ -128,20 +181,20 @@ function checkForm(form) {
 //Функция вставки чего-то в поле ввода туда, где находится курсор
 function insertSomething(insert, textArea) 
 {
-	// get cursor's position:
+	// получить позицию курсора
 	var startPos = textArea.selectionStart,
 		endPos = textArea.selectionEnd,
 		cursorPos = startPos,
 		tmpStr = textArea.value;
 
-	// insert:
+	// вставить
 	textArea.value = tmpStr.substring(0, startPos) + insert + tmpStr.substring(endPos, tmpStr.length);
 
-	// move cursor:
+	// сдвинуть курсор
 	setTimeout(() => {
 		cursorPos += insert.length;
 		textArea.selectionStart = textArea.selectionEnd = cursorPos;
-	}, 10);
+	}, 1);
 
 	textArea.focus();
 }
