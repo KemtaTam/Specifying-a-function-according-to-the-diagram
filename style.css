@@ -16,17 +16,49 @@ header{
 	font-family: 'Raleway', sans-serif;
 }
 
-img{
+.wrapper{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+.wrapper__el{
+	display: flex;
+	flex-direction: column;
+	margin-left: 10px;
+	align-items: center;
+}
+.draw-img, .clear-img{
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+.clearAll-btn{
+	border: 1px solid rgba(0, 0, 0, 0.767);
+	border-radius: 2px;
+	background-color: #0000002e;
+	color: rgba(0, 0, 0, 0.76);
+	font-size: 9px;
+	padding: 2px;
+	cursor: pointer;
+}
+.canvas{
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: 42px;
+}
+
+/* img{
 	display: flex;
 	margin: 20px auto 0px auto;
 	width: 450px;
 	box-shadow: 2px 2px 10px rgb(43, 43, 43);
 	max-width: 99%;
-}
+} */
 
 form{
 	font-family: Arial, Helvetica, sans-serif;
-	margin-top: 20px;
+	margin-top: 20px; 
 }
 
 .ans{
