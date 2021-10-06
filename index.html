@@ -12,14 +12,21 @@
 <body>
 	<header><b>Постройте функцию по заданной схеме</b></header>
 
-	<!-- <img src="images/scheme.jpg" alt=""> -->
+	<div class="wrapper">
+		<canvas class="canvas" width="600px" height="280px"></canvas>
+		<div class="wrapper__el">
+			<img class="draw-img" src="images/draw.png" alt="">
+			<img class="clear-img" src="images/clear.png" alt="">
+			<button class="clearAll-btn">Очистить</button>
+		</div>
+	</div>
 
 	<form id="form" action="/" method="GET">
 		<div class="ans">
 			<div class="symb">
-				В качестве инверсии используйте символ <b>¬</b><br>
-				В качестве конъюнкции используйте символ <b>∧</b><br>
-				В качестве дизъюнкции используйте символ <b>∨</b><br><br>
+				В качестве инверсии используйте символ: <b>¬</b><br>
+				В качестве конъюнкции используйте символ: <b>∧</b><br>
+				В качестве дизъюнкции используйте символ: <b>∨</b><br><br>
 
 				<div class="bodySymb">
 					<button class="bSymb" type="button" id="bInv">¬</button>
